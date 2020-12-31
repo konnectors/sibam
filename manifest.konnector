@@ -1,0 +1,84 @@
+{
+  "version": "1.0.0",
+  "name": "SIBAM",
+  "type": "konnector",
+  "language": "node",
+  "icon": "icon.png",
+  "slug": "sibam",
+  "source": "git://github.com/X-Ryl669/cozy-konnector-sibam.git",
+  "editor": "X-Ryl669",
+  "vendor_link": "www.sibam.fr",
+  "categories": ["energy"],
+  "fields": {
+    "login": {
+      "type": "text"
+    },
+    "password": {
+      "type": "password"
+    }
+  },
+  "folders": [{"defaultDir": "$administrative/$konnector/$account"}],
+  "data_types": [
+    "bill"
+  ],
+  "screenshots": [],
+  "permissions": {
+    "bank operations": {
+      "type": "io.cozy.bank.operations"
+    },
+    "bills": {
+      "type": "io.cozy.bills"
+    },
+    "files": {
+      "type": "io.cozy.files"
+    },
+    "accounts": {
+      "type": "io.cozy.accounts"
+    }
+  },
+  "developer": {
+    "name": "X-Ryl669",
+    "url": "https://blog.cyril.by"
+  },
+  "langs": ["fr", "en"],
+  "locales": {
+    "fr": {
+      "short_description": "Récupère la liste des factures SIBAM",
+      "long_description": "Récupère la liste des factures du fournisseur d'eau SIBAM",
+      "permissions": {
+        "bank operations": {
+          "description": "Utilisé pour relier les factures à des operations bancaires"
+        },
+        "bills": {
+          "description": "Utilisé pour sauver les données des factures"
+        },
+        "files": {
+          "description": "Utilisé pour sauvegarder les factures"
+        },
+        "accounts": {
+          "description": "Utilisé pour obtenir les données du compte"
+        }
+      }
+    },
+    "en": {
+      "short_description": "Fetch a list of bills from SIBAM",
+      "long_description": "Fetch a list of bills from the SIBAM website",
+      "permissions": {
+        "bank operations": {
+          "description": "Required to link bank operations to bills"
+        },
+        "bills": {
+          "description": "Required to save the bills data"
+        },
+        "files": {
+          "description": "Required to save the bills"
+        },
+        "accounts": {
+          "description": "Required to get the account's data"
+        }
+      }
+    }
+  },
+  "banksTransactionRegExp": "\\bsibam\\b",
+  "manifest_version": "2"
+}
