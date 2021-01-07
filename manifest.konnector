@@ -5,9 +5,9 @@
   "language": "node",
   "icon": "icon.svg",
   "slug": "sibam",
-  "source": "git://github.com/X-Ryl669/cozy-konnector-sibam.git",
+  "source": "git://github.com/konnectors/sibam.git",
   "editor": "X-Ryl669",
-  "vendor_link": "www.sibam.fr",
+  "vendor_link": "https://ael.sibam.fr/Portail",
   "categories": ["energy"],
   "fields": {
     "login": {
