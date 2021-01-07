@@ -1,3 +1,7 @@
+process.env.SENTRY_DSN =
+  process.env.SENTRY_DSN ||
+  'https://5df2d473a7d04403bef630301165704c@sentry.cozycloud.cc/144'
+
 const { BaseKonnector, requestFactory, log } = require('cozy-konnector-libs')
 const stream = require('stream')
 
