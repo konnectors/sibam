@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "name": "Sibam",
   "type": "konnector",
   "language": "node",
@@ -8,7 +8,9 @@
   "source": "git://github.com/konnectors/sibam.git",
   "editor": "X-Ryl669",
   "vendor_link": "https://ael.sibam.fr/Portail",
-  "categories": ["energy"],
+  "categories": [
+    "energy"
+  ],
   "fields": {
     "login": {
       "type": "text"
@@ -17,7 +19,11 @@
       "type": "password"
     }
   },
-  "folders": [{"defaultDir": "$administrative/$konnector/$account"}],
+  "folders": [
+    {
+      "defaultDir": "$administrative/$konnector/$account"
+    }
+  ],
   "data_types": [
     "bill"
   ],
@@ -40,7 +46,10 @@
     "name": "X-Ryl669",
     "url": "https://blog.cyril.by"
   },
-  "langs": ["fr", "en"],
+  "langs": [
+    "fr",
+    "en"
+  ],
   "locales": {
     "fr": {
       "short_description": "Récupère la liste des factures SIBAM",
