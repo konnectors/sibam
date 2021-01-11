@@ -75,7 +75,6 @@ async function start(fields, cozyParameters) {
     }
   })
 
-  // const $ = await request(perUserUrl)
   // cheerio (https://cheerio.js.org/) uses the same api as jQuery (http://jquery.com/)
   log('info', 'Parsing list of documents')
   const documents = await parseDocuments(JSON.parse(data))
@@ -179,5 +178,5 @@ function parseDocuments(data) {
 
 // Convert a price string to a float
 function normalizePrice(price) {
-  return parseFloat(price.replace('£', '').trim())
+  return parseFloat(price.replace('€', '').trim())
 }
