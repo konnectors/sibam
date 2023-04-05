@@ -176,7 +176,11 @@ function parseDocuments(data) {
         2
       )}EUR.pdf`,
       vendor: VENDOR,
-      qualification: Qualification.getByLabel('water_invoice')
+      fileAttributes: {
+        metadata: {
+          qualificaqualification: Qualification.getByLabel('water_invoice')
+        }
+      }
     }
   })
   return docs
