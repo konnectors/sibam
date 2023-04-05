@@ -1,8 +1,13 @@
 process.env.SENTRY_DSN =
   process.env.SENTRY_DSN ||
-  'https://5df2d473a7d04403bef630301165704c@sentry.cozycloud.cc/144'
+  'https://cb75f5d2b165431082c2c9443bbdcffe@errors.cozycloud.cc/56'
 
-const { BaseKonnector, requestFactory, log } = require('cozy-konnector-libs')
+const {
+  BaseKonnector,
+  requestFactory,
+  cozyClient,
+  log
+} = require('cozy-konnector-libs')
 const stream = require('stream')
 
 const request = requestFactory({
@@ -20,6 +25,8 @@ const request = requestFactory({
 
 const VENDOR = 'SIBAM'
 // const baseUrl = 'https://ael.sibam.fr'
+const models = cozyClient.new.models
+const { Qualification } = models.document
 
 module.exports = new BaseKonnector(start)
 
@@ -37,8 +44,7 @@ async function start(fields, cozyParameters) {
   log('info', 'Fetching the list of documents')
   const data = await request({
     method: 'POST',
-    uri:
-      'https://ael.sibam.fr/Portail/fr/Usager/Abonnement/AjaxFactureSynchros?EstAcompte=false',
+    uri: 'https://ael.sibam.fr/Portail/fr/Usager/Abonnement/AjaxFactureSynchros?EstAcompte=false',
     form: {
       sEcho: '1',
       iColumns: '11',
@@ -141,7 +147,7 @@ function parseDocuments(data) {
     'Novembre',
     'Décembre'
   ]
-  const docs = lines.map(function(line) {
+  const docs = lines.map(function (line) {
     var date = new Date(line[1]),
       price = normalizePrice(line[4]),
       dateStr = `${
@@ -152,13 +158,12 @@ function parseDocuments(data) {
       date: date,
       amount: price,
       id: line[16],
-      fetchFile: async function(d) {
+      fetchFile: async function (d) {
         log('info', 'Fetching file for id: ' + d.id)
         // Prepare the store to fetch the next bill
         await request({
           method: 'POST',
-          uri:
-            'https://ael.sibam.fr/Portail/fr/Usager/Abonnement/StoreFactureId',
+          uri: 'https://ael.sibam.fr/Portail/fr/Usager/Abonnement/StoreFactureId',
           body: { id: d.id },
           json: true
         })
@@ -170,7 +175,8 @@ function parseDocuments(data) {
       filename: `${dateStr.replace(/ /g, '_')}_${VENDOR}_${price.toFixed(
         2
       )}EUR.pdf`,
-      vendor: VENDOR
+      vendor: VENDOR,
+      qualification: Qualification.getByLabel('water_invoice')
     }
   })
   return docs
