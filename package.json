@@ -9,7 +9,6 @@
   "keywords": [],
   "author": "Cozy Cloud",
   "license": "AGPL-3.0",
-  "main": "./src/index.js",
   "eslintConfig": {
     "extends": [
       "cozy-app"
@@ -37,10 +36,10 @@
     "travisDeployKey": "./bin/generate_travis_deploy_key"
   },
   "dependencies": {
-    "cozy-konnector-libs": "4.50.0"
+    "cozy-konnector-libs": "5.0.0"
   },
   "devDependencies": {
-    "cozy-jobs-cli": "1.17.1",
-    "cozy-konnector-build": "1.2.4"
+    "cozy-jobs-cli": "2.0.0",
+    "cozy-konnector-build": "1.4.5"
   }
 }
